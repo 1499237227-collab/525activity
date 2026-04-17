@@ -1,0 +1,393 @@
+/* RTC《科学应用版》报告书式排版 — 与 theme-relax 搭配 */
+
+.rtc-doc-head {
+  text-align: center;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(26, 138, 126, 0.14);
+}
+
+/* 三大块报告：卡片化分节，便于长文扫读 */
+.rtc-report-surface {
+  padding: 16px 14px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.52);
+  border: 1px solid rgba(26, 138, 126, 0.14);
+  box-shadow: 0 6px 24px rgba(26, 77, 78, 0.06);
+}
+
+.theme-observatory .rtc-report-surface {
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.rtc-doc-kicker {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(26, 138, 126, 0.7);
+  margin: 0 0 8px;
+}
+
+.rtc-doc-title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1a4d4e;
+  letter-spacing: 0.02em;
+}
+
+.rtc-doc-subtitle {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #158077;
+}
+
+.rtc-cover {
+  margin-bottom: 18px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(26, 138, 126, 0.18);
+}
+
+.rtc-cover__intro p {
+  margin: 0 0 8px;
+  font-size: 12px;
+  line-height: 1.65;
+  color: rgba(26, 77, 78, 0.88);
+}
+
+.rtc-cover__intro p:last-child {
+  margin-bottom: 0;
+}
+
+.rtc-part-desc {
+  margin: 0 0 18px;
+  padding: 10px 12px;
+  font-size: 11px;
+  line-height: 1.55;
+  color: rgba(26, 77, 78, 0.78);
+  border-radius: 12px;
+  background: rgba(26, 138, 126, 0.06);
+  border: 1px solid rgba(26, 138, 126, 0.1);
+}
+
+.rtc-sec {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(26, 77, 78, 0.08);
+}
+
+.rtc-sec:last-of-type {
+  border-bottom: none;
+}
+
+.rtc-sec__title {
+  margin: 0 0 8px;
+  padding-left: 10px;
+  border-left: 3px solid #1a8a7e;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a4d4e;
+  line-height: 1.35;
+}
+
+.rtc-sec__def {
+  margin: 0 0 8px;
+  font-size: 11px;
+  color: rgba(26, 77, 78, 0.62);
+}
+
+.rtc-sec__hint {
+  margin: 0 0 10px;
+  font-size: 11px;
+  color: #158077;
+  font-weight: 600;
+}
+
+.rtc-portrait {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rtc-portrait__hero {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(26, 138, 126, 0.15);
+}
+
+.rtc-portrait__emoji {
+  font-size: 2.75rem;
+  line-height: 1;
+}
+
+.rtc-portrait__name {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a4d4e;
+}
+
+.rtc-portrait__line {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(26, 77, 78, 0.85);
+}
+
+.rtc-portrait__chart {
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(26, 77, 78, 0.08);
+}
+
+.rtc-portrait__chart-label {
+  display: block;
+  font-size: 10px;
+  color: rgba(26, 77, 78, 0.55);
+  margin-bottom: 8px;
+}
+
+.rtc-placeholder-note {
+  margin: 0;
+  font-size: 10px;
+  color: rgba(26, 77, 78, 0.5);
+  line-height: 1.45;
+}
+
+.rtc-parse p {
+  margin: 0 0 10px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: rgba(26, 77, 78, 0.9);
+}
+
+.rtc-sens-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 360px) {
+  .rtc-sens-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+}
+
+.rtc-sens-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rtc-sens-item__name {
+  font-size: 10px;
+  color: rgba(26, 77, 78, 0.55);
+}
+
+.rtc-sens-block {
+  padding: 10px 8px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.rtc-sens-block--0 {
+  background: linear-gradient(135deg, #94a3b8, #64748b);
+}
+.rtc-sens-block--1 {
+  background: linear-gradient(135deg, #7dd3fc, #38bdf8);
+}
+.rtc-sens-block--2 {
+  background: linear-gradient(135deg, #86efac, #4ade80);
+}
+.rtc-sens-block--3 {
+  background: linear-gradient(135deg, #fde047, #eab308);
+  color: #422006;
+  text-shadow: none;
+}
+.rtc-sens-block--4 {
+  background: linear-gradient(135deg, #fb923c, #ea580c);
+}
+
+.rtc-single-meter {
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(26, 77, 78, 0.1);
+}
+
+.rtc-single-meter__track {
+  height: 14px;
+  border-radius: 8px;
+  background: rgba(26, 77, 78, 0.08);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.rtc-single-meter__fill {
+  height: 100%;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #5fd4b8, #1a8a7e);
+  transition: width 0.35s ease;
+}
+
+.rtc-single-meter__label {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a4d4e;
+}
+
+.rtc-single-meter__sub {
+  margin: 4px 0 0;
+  font-size: 11px;
+  color: rgba(26, 77, 78, 0.65);
+}
+
+.rtc-career p {
+  margin: 0 0 8px;
+  font-size: 12px;
+  line-height: 1.65;
+  color: rgba(26, 77, 78, 0.88);
+}
+
+.rtc-career__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.rtc-career__tags span {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(26, 138, 126, 0.12);
+  color: #158077;
+}
+
+.rtc-p3-placeholder {
+  margin-bottom: 12px;
+}
+
+.rtc-p3-placeholder__box {
+  height: 88px;
+  border-radius: 12px;
+  border: 2px dashed rgba(26, 138, 126, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: rgba(26, 77, 78, 0.45);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.rtc-p3-role,
+.rtc-p3-count,
+.rtc-p3-tip {
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(26, 77, 78, 0.88);
+  margin: 0 0 8px;
+}
+
+.rtc-dot-red {
+  color: #dc2626;
+}
+
+.rtc-issue-list {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+.rtc-issue-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.55;
+  margin-bottom: 8px;
+  color: rgba(26, 77, 78, 0.9);
+}
+
+.rtc-issue-dot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 4px;
+}
+
+.rtc-issue-dot--ok {
+  background: #22c55e;
+}
+.rtc-issue-dot--watch {
+  background: #eab308;
+}
+.rtc-issue-dot--alert {
+  background: #ef4444;
+}
+
+/* 结果参考.doc：示意图下方的说明正文 */
+.rtc-sec__body {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(26, 77, 78, 0.08);
+  font-size: 12px;
+  line-height: 1.75;
+  color: rgba(26, 77, 78, 0.9);
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+.rtc-parse--block {
+  margin: 0;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+.rtc-career__lead {
+  margin: 0 0 10px;
+  font-size: 12px;
+  line-height: 1.65;
+  color: rgba(26, 77, 78, 0.88);
+}
+
+.rtc-issue-item {
+  align-items: flex-start;
+}
+
+.rtc-issue-item__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.rtc-issue-item__name {
+  display: block;
+  font-weight: 600;
+  color: #1a4d4e;
+  margin-bottom: 4px;
+}
+
+.rtc-issue-item__desc {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.65;
+  color: rgba(26, 77, 78, 0.78);
+  font-weight: 400;
+}

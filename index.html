@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#96E6A1" />
+  <meta name="description" content="525 心理健康节 · 心理微观察 — 测测 × RTC 微颗粒心理实验室" />
+  <title>心理微观察 · 525 心理健康节</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/micro.css?v=7" />
+  <link rel="stylesheet" href="./css/report.css?v=9" />
+  <link rel="stylesheet" href="./css/rtc-report.css?v=4" />
+  <link rel="stylesheet" href="./css/observatory.css?v=8" />
+  <link rel="stylesheet" href="./css/guess-particles.css?v=2" />
+  <link rel="stylesheet" href="./css/theme-relax.css?v=7" />
+</head>
+<body class="theme-observatory">
+  <nav class="step-rail" id="stepRail" aria-label="测评流程" hidden>
+    <ol class="step-rail__list">
+      <li class="step-rail__item" data-step="0"><span class="step-rail__dot"></span><span class="step-rail__lbl">身份</span></li>
+      <li class="step-rail__item" data-step="1"><span class="step-rail__dot"></span><span class="step-rail__lbl">答题</span></li>
+      <li class="step-rail__item" data-step="2"><span class="step-rail__dot"></span><span class="step-rail__lbl">猜颗粒</span></li>
+      <li class="step-rail__item" data-step="3"><span class="step-rail__dot"></span><span class="step-rail__lbl">报告</span></li>
+    </ol>
+  </nav>
+  <div class="app" id="appRoot">
+    <div class="bg-stack bg-stack--base" aria-hidden="true">
+      <div class="bg-gradient"></div>
+      <div class="bg-fluid"></div>
+    </div>
+    <canvas id="nebulaCanvas" class="nebula-canvas" aria-hidden="true"></canvas>
+    <div id="microLens" class="micro-lens" aria-hidden="true"></div>
+
+    <div class="views">
+      <!-- 页面一：沉浸式首页（单屏全屏层） -->
+      <section class="view view--landing is-active" data-view="landing" id="viewLanding">
+        <div class="view-shell view-shell--landing">
+        <div class="landing-inner">
+          <header class="landing-toolbar">
+            <span class="landing-toolbar__btn landing-toolbar__btn--ghost" aria-hidden="true">‹</span>
+            <div class="landing-toolbar__brand">
+              <span class="landing-toolbar__logo">
+                <span class="landing-toolbar__logo-mark" aria-hidden="true"></span>
+                测测 × RTC
+              </span>
+            </div>
+            <button type="button" class="landing-toolbar__btn" id="btnShareLanding" aria-label="分享活动链接">↗</button>
+          </header>
+
+          <div class="landing-visual">
+            <div class="landing-scene">
+              <div class="landing-scene-badge" role="note">
+                <span class="landing-scene-badge__n">525</span>
+                <span class="landing-scene-badge__sep" aria-hidden="true">·</span>
+                <span class="landing-scene-badge__sub">心理健康节</span>
+              </div>
+              <svg class="landing-scene__svg" viewBox="0 0 375 248" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="525 心理健康节主题插画">
+                <defs>
+                  <linearGradient id="relaxSky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#c8ebe2" />
+                    <stop offset="55%" stop-color="#a6e8b2" />
+                    <stop offset="100%" stop-color="#95e3a0" />
+                  </linearGradient>
+                  <linearGradient id="relaxHill1" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#9fd9cc" />
+                    <stop offset="100%" stop-color="#7ecfb8" />
+                  </linearGradient>
+                </defs>
+                <rect width="375" height="248" fill="url(#relaxSky)" />
+                <ellipse cx="286" cy="46" rx="30" ry="28" fill="rgba(255,255,255,0.92)" />
+                <path d="M0 118 C 70 88 120 108 188 98 C 250 90 300 78 375 95 L 375 248 L 0 248 Z" fill="url(#relaxHill1)" opacity="0.88" />
+                <path d="M0 138 C 90 118 150 128 220 122 C 290 116 330 108 375 118 L 375 248 L 0 248 Z" fill="#7ec8b0" opacity="0.9" />
+                <path d="M52 56 L58 60 L64 56 M220 48 L226 52 L232 48" stroke="#1a4d4e" stroke-width="1.6" stroke-linecap="round" opacity="0.28" fill="none" />
+                <path d="M28 168 C 18 168 14 152 24 138 C 32 118 58 112 88 118 C 118 108 152 102 188 112 C 228 98 268 108 302 128 C 338 120 352 138 348 168 C 352 188 330 202 298 198 L 42 202 C 32 198 26 182 28 168 Z" fill="rgba(255,255,255,0.96)" />
+                <ellipse cx="168" cy="148" rx="20" ry="18" fill="#ffd321" />
+                <rect x="150" y="158" width="44" height="22" rx="10" fill="#ffd321" />
+                <rect x="156" y="164" width="32" height="14" rx="6" fill="#ffb38a" opacity="0.85" />
+                <circle cx="160" cy="142" r="5" fill="#1a4d4e" opacity="0.65" />
+                <circle cx="176" cy="142" r="5" fill="#1a4d4e" opacity="0.65" />
+                <rect x="168" y="152" width="14" height="10" rx="3" fill="#ffd321" />
+                <ellipse cx="118" cy="178" rx="6" ry="10" fill="rgba(255,255,255,0.85)" transform="rotate(-18 118 178)" />
+                <ellipse cx="248" cy="172" rx="5" ry="8" fill="rgba(255,255,255,0.75)" transform="rotate(12 248 172)" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="landing-hero">
+            <div class="landing-title-wrap">
+              <h1 class="landing-title landing-title--product">RTC微颗粒心理测评</h1>
+            </div>
+            <p class="landing-sub">从一个&ldquo;你&rdquo;拆成多个关系场景里的&ldquo;你&rdquo;，精细还原你的相处习惯，并提供真正能用的沟通方案</p>
+          </div>
+
+          <div class="landing-orbit">
+            <p class="landing-probe" id="landingProbe">正在探测你的心理频率…</p>
+            <button type="button" class="btn-cta-glass" id="btnEnter">
+              <span class="btn-cta-glass__shine" aria-hidden="true"></span>
+              开始测试
+            </button>
+          </div>
+
+          <footer class="landing-trust">
+            <p class="landing-trust__lead">
+              <span class="landing-trust__icon" aria-hidden="true">🔬</span>
+              测测 App × RTC 微颗粒心理实验室联名出品
+            </p>
+            <p class="landing-trust__body">
+              本测评基于《世界心理健康量表》及 RTC 独家微颗粒性格算法。严谨、科学、精准。RtCatch已累积样本量超过2,300万人次。
+            </p>
+          </footer>
+
+          <p class="landing-privacy">
+            <span class="landing-privacy__lock" aria-hidden="true">🔒</span>
+            你的每一颗心理颗粒都是隐私。结果受 RTC 实验室数据加密保护，仅你自己可见。
+          </p>
+        </div>
+        </div>
+      </section>
+
+      <!-- 页面二：身份定频 -->
+      <section class="view view--identity" data-view="identity" id="viewIdentity">
+        <div class="view-shell view-shell--identity">
+          <div class="top-bar">
+            <button type="button" class="back-btn" id="btnBackLanding">← 返回</button>
+            <span class="brand-mini">RTC · 微颗粒</span>
+          </div>
+          <div class="view-main">
+            <h2 class="identity-page-title">身份定频</h2>
+            <p class="identity-page-lead">覆盖恋爱、婚姻、亲子、职场与学业中的心理状态评估焦点。请选择最贴近你当前处境的一项——报告里的「他人眼中的你」将按这一身份视角书写。</p>
+            <div id="identityStage" class="identity-stage">
+              <div id="identitySilhouette" class="identity-silhouette" aria-hidden="true">
+                <div class="identity-silhouette__texture"></div>
+                <svg class="identity-silhouette__svg" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="rgba(0,245,255,0.15)" stroke="rgba(0,245,255,0.45)" stroke-width="0.8" d="M78 120c-8-18-12-38-8-52 4-16 18-28 32-30 14-2 28 6 34 20 6 14 4 34-4 52-6 14-18 24-32 28-10 3-18-6-22-18z M122 118c10-16 16-36 14-50-2-14-12-26-26-30-8-2-16 0-22 6 12 8 20 22 22 38 2 18-4 38-14 54 8-4 18-12 26-18z"/>
+                </svg>
+                <p class="identity-silhouette__caption">关系视角 · 双影轮廓</p>
+              </div>
+              <div id="identityGrid" class="identity-grid identity-grid--cards"></div>
+            </div>
+          </div>
+          <div class="view-footer">
+            <button type="button" class="btn btn-primary" id="btnStartQuiz" disabled>开始 70 题采样</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 测评 -->
+      <section class="view view--quiz" data-view="quiz" id="viewQuiz">
+        <div class="view-shell view-shell--quiz">
+        <div class="quiz-header">
+          <div>
+            <div class="quiz-meta">第 <span id="qIndex">1</span> / <span id="qTotal">70</span> 题</div>
+            <p class="quiz-meta-sub">单选 · 1–5 分</p>
+          </div>
+          <div class="progress-ring-wrap" aria-hidden="true">
+            <svg width="52" height="52" viewBox="0 0 52 52">
+              <defs>
+                <linearGradient id="gradRing" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#1A8A7E" />
+                  <stop offset="100%" stop-color="#5FD4B8" />
+                </linearGradient>
+              </defs>
+              <circle class="progress-ring__bg" cx="26" cy="26" r="22" />
+              <circle id="progressFg" class="progress-ring__fg" cx="26" cy="26" r="22" />
+            </svg>
+            <span class="progress-pct" id="progressPct">0%</span>
+          </div>
+        </div>
+        <div class="view-main">
+          <div class="glass-card">
+            <p id="questionText" class="question-text">题目加载中…</p>
+            <div id="likert" class="likert"></div>
+          </div>
+        </div>
+        <div class="view-footer">
+          <button type="button" class="btn btn-secondary" id="btnBackIdentity">上一步 · 重选身份</button>
+        </div>
+        </div>
+      </section>
+
+      <!-- 认知挑战：猜动物 -->
+      <section class="view view--guess" data-view="guess" id="viewGuess">
+        <div class="view-shell view-shell--guess">
+          <div class="view-main">
+            <header class="guess-hero">
+              <p class="guess-hero__kicker">揭晓前 · 最后一问</p>
+              <h2 class="guess-hero__title">哪一种颗粒，最像你？</h2>
+              <p class="guess-hero__soft">以下 6 种与本次测评剖面最接近，请点选一项；若与系统判定一致，「自我性格分析」全文免费展开。</p>
+            </header>
+
+            <div id="animalPool" class="animal-deck animal-deck--six" role="listbox" aria-label="动物人格选项" aria-multiselectable="false"></div>
+            <p id="animalHint" class="animal-hint">点选一颗粒；点「详情」可查看画像要点</p>
+          </div>
+          <div class="view-footer guess-foot">
+            <button type="button" class="btn btn-primary" id="btnSubmitGuess" disabled>确认选择</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 解读报告 -->
+      <section class="view view--report" data-view="report" id="viewReport">
+        <div class="view-shell view-shell--report">
+          <div class="view-main view-main--report">
+            <header class="rtc-doc-head">
+              <p class="rtc-doc-kicker">测测 × RTC 微颗粒心理实验室</p>
+              <h1 class="rtc-doc-title">RTC微颗粒心理检测</h1>
+              <p class="rtc-doc-subtitle">科学应用版</p>
+            </header>
+
+            <section class="report-part report-part--self rtc-report-surface" id="reportPartSelf">
+              <div class="rtc-cover">
+                <div class="rtc-cover__intro">
+                  <p>RTC来自英国专家团队的心理学、行为学及统计学。</p>
+                  <p>RTC已有40年，全球2,300万人次有效测试。</p>
+                  <p>适用范围：性格、行为、角色测试，别人看你，心理状态等。</p>
+                </div>
+              </div>
+
+              <div class="report-self-wrap" id="reportSelfWrap">
+              <div class="report-part-head report-part-head--with-action">
+                <div class="report-part-head__main">
+                  <span class="report-part-num">01</span>
+                  <h3 class="report-part-title">第一部份检测　我的本性</h3>
+                </div>
+                <button type="button" class="report-part-share" id="btnShareModuleSelf" aria-label="分享本模块为图片">↗</button>
+              </div>
+              <p class="rtc-part-desc">采用心理学、行为学及统计学分析 · <strong>有效期 2 年</strong></p>
+
+              <section class="rtc-sec">
+                <h4 class="rtc-sec__title">1. 我的性格画像</h4>
+                <p class="rtc-sec__hint">检测结果</p>
+                <div class="rtc-portrait" id="rtcP1Portrait">
+                  <div class="rtc-portrait__hero">
+                    <span class="rtc-portrait__emoji" id="reportAnimalEmoji">🐯</span>
+                    <div>
+                      <p class="rtc-portrait__name" id="reportAnimalName">—</p>
+                      <p class="rtc-portrait__line" id="reportAnimalLine">—</p>
+                    </div>
+                  </div>
+                  <div class="rtc-portrait__chart">
+                    <span class="rtc-portrait__chart-label">五维颗粒参考图</span>
+                    <div class="radar-wrap radar-wrap--sm">
+                      <canvas id="radarCanvas" width="200" height="200" aria-label="五维雷达图"></canvas>
+                    </div>
+                    <ul id="dimList" class="dim-list dim-list--compact"></ul>
+                  </div>
+                  <p class="rtc-placeholder-note" id="rtcP1PortraitNote">色块与图示为线上示意，仅供参考。</p>
+                </div>
+              </section>
+
+              <section class="rtc-sec">
+                <h4 class="rtc-sec__title">2. 性格解析</h4>
+                <div id="rtcP1Parse" class="rtc-parse"></div>
+              </section>
+
+              <section class="rtc-sec">
+                <h4 class="rtc-sec__title">3. 敏感度</h4>
+                <p class="rtc-sec__def">对事情或变化的敏锐性</p>
+                <p class="rtc-sec__hint">检测结果（五维以块状色阶表示：过低 / 偏低 / 常态 / 偏高 / 过高）</p>
+                <div id="rtcP1Sens" class="rtc-sens-host"></div>
+                <div id="rtcP1SensNote" class="rtc-sec__body"></div>
+              </section>
+
+              <section class="rtc-sec">
+                <h4 class="rtc-sec__title">4. 自信心</h4>
+                <p class="rtc-sec__def">面对挑战时自信的程度</p>
+                <p class="rtc-sec__hint">检测结果</p>
+                <div id="rtcP1Conf" class="rtc-single-meter-host"></div>
+                <div id="rtcP1ConfNote" class="rtc-sec__body"></div>
+              </section>
+
+              <section class="rtc-sec">
+                <h4 class="rtc-sec__title">5. 抗压力</h4>
+                <p class="rtc-sec__def">心智上能承受多少压力</p>
+                <p class="rtc-sec__hint">检测结果</p>
+                <div id="rtcP1Resist" class="rtc-single-meter-host"></div>
+                <div id="rtcP1ResistNote" class="rtc-sec__body"></div>
+              </section>
+
+              <section class="rtc-sec">
+                <h4 class="rtc-sec__title">6. 适合的职业发展</h4>
+                <p class="rtc-sec__def">您的性格在哪些岗位更能发挥所长</p>
+                <div id="rtcP1Career" class="rtc-career"></div>
+              </section>
+
+              <div class="report-self-lock" id="reportSelfLock" hidden>
+                <div class="report-self-lock__inner">
+                  <span class="report-self-lock__icon" aria-hidden="true">🔒</span>
+                  <p class="report-self-lock__title">未猜中动物人格</p>
+                  <p class="report-self-lock__txt">自我性格分析已锁定。请使用底部 <strong>¥19.9</strong> 解锁完整报告，或邀请好友成团享 7 折。</p>
+                </div>
+              </div>
+              </div>
+            </section>
+
+            <section class="report-part report-part--other rtc-report-surface" id="reportPartOther">
+              <div class="report-part-head report-part-head--with-action">
+                <div class="report-part-head__main">
+                  <span class="report-part-num">02</span>
+                  <h3 class="report-part-title" id="reportPart2Title">第二部份检测　他人对你表现的看法</h3>
+                </div>
+                <button type="button" class="report-part-share" id="btnShareModuleOther" aria-label="分享本模块为图片">↗</button>
+              </div>
+              <p class="rtc-part-desc rtc-part-desc--p2">采用神经反射学、行为学及统计学分析 · <strong>有效期 未来 3 个月</strong></p>
+              <div class="report-frost" id="reportOtherFrost">
+                <div class="report-frost__inner" id="reportOtherInner"></div>
+                <div class="report-frost__mask">
+                  <span class="report-frost__lock" aria-hidden="true">🔒</span>
+                  <p class="report-frost__txt" id="paywallHook">解锁后查看第二部份完整解读</p>
+                  <button type="button" class="btn btn-primary btn--sm" id="btnUnlockOther">¥12.9 解锁他人视角</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="report-part report-part--advice rtc-report-surface" id="reportPartAdvice">
+              <div class="report-part-head report-part-head--with-action">
+                <div class="report-part-head__main">
+                  <span class="report-part-num">03</span>
+                  <h3 class="report-part-title">第三部份检测　我的心理状态问题</h3>
+                </div>
+                <button type="button" class="report-part-share" id="btnShareModuleAdvice" aria-label="分享本模块为图片">↗</button>
+              </div>
+              <p class="rtc-part-desc">采用行为学、全球心理健康模型比对分析</p>
+              <div class="advice-card" id="reportAdviceWrap">
+                <div class="advice-card__inner" id="reportAdviceInner">
+                  <p class="rtc-sec__hint">检测结果</p>
+                  <div class="rtc-p3-placeholder" id="rtcP3Placeholder" aria-hidden="true">
+                    <div class="rtc-p3-placeholder__box">心理状态模型示意图</div>
+                    <p class="rtc-placeholder-note">线上示意；完整图表以机构出具材料为准。</p>
+                  </div>
+                  <p class="rtc-p3-role"><strong>我的角色：</strong><span id="reportP3Role">—</span></p>
+                  <p class="rtc-p3-count" id="reportP3Count">本次检测心理状态问题：8 项</p>
+                  <p class="rtc-p3-tip">若问题倾向出现<strong class="rtc-dot-red">红点</strong>，应每个月追踪检测及改善；平时 2～3 个月定期自我检测。</p>
+                  <ul id="reportPsychIssues" class="rtc-issue-list"></ul>
+                  <h4 class="advice-card__h advice-card__h--sub">干预与自助建议</h4>
+                  <p class="advice-card__text" id="reportAdviceText">—</p>
+                </div>
+                <div class="advice-card__lock" id="reportAdviceLock">
+                  <button type="button" class="btn btn-ghost btn--sm" id="btnUnlockAdvice">随全报告解锁</button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <div class="report-dock" id="reportDock">
+          <p class="report-dock__tip" id="reportPayTip">—</p>
+          <div class="report-dock__actions">
+            <button type="button" class="btn btn-primary" id="btnPayPrimary">立即解锁</button>
+            <button type="button" class="btn btn-ghost" id="btnPayGroupInline">邀请好友成团 · 共享 7 折</button>
+          </div>
+          <p class="report-dock__hint" id="reportPayGroupHint">—</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div id="guessDetailModal" class="guess-modal" aria-hidden="true">
+    <div class="guess-modal__backdrop" id="guessDetailBackdrop"></div>
+    <div class="guess-modal__panel" role="dialog" aria-modal="true" aria-labelledby="guessDetailTitle">
+      <button type="button" class="guess-modal__close" id="guessDetailClose" aria-label="关闭">×</button>
+      <div class="guess-modal__body" id="guessDetailBody"></div>
+      <button type="button" class="btn btn-primary guess-modal__cta" id="guessDetailPick">选此颗粒</button>
+    </div>
+  </div>
+
+  <div id="toastLayer" class="toast-layer" role="status" aria-live="polite">
+    <div class="toast-inner" id="toastText"></div>
+  </div>
+
+  <div id="geniusBurst" class="genius-burst" aria-modal="true">
+    <div class="genius-card">
+      <h3>认知天才</h3>
+      <p class="genius-card__lead">动物人格匹配度 <span id="geniusMatch">—</span>% · 已免费解锁自我解读全文</p>
+      <button type="button" class="btn btn-primary" style="margin-top:20px" id="btnCloseGenius">查看报告</button>
+    </div>
+  </div>
+
+  <script src="./js/questions.js?v=2"></script>
+  <script src="./js/animals.js?v=2"></script>
+  <script src="./js/audio-haptic.js?v=1"></script>
+  <script src="./js/nebula.js?v=1"></script>
+  <script src="./js/report-copy.js?v=3"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous"></script>
+  <script src="./js/app.js?v=18"></script>
+</body>
+</html>

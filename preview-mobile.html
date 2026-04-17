@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>手机预览 · 心理微观察 H5</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100vh;
+      background: #2a2d35;
+      font-family: system-ui, sans-serif;
+    }
+    .wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 16px;
+      gap: 12px;
+    }
+    .hint {
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 12px;
+      text-align: center;
+      max-width: 360px;
+      line-height: 1.5;
+    }
+    .hint code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+    /* 常见手机逻辑宽度 390px（iPhone 14 一类） */
+    .phone {
+      width: min(390px, calc(100vw - 32px));
+      height: min(844px, calc(100vh - 120px));
+      border-radius: 44px;
+      border: 12px solid #1c1e24;
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 24px 80px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+      background: #000;
+      flex-shrink: 0;
+    }
+    .phone iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="hint">
+      请先在本目录运行静态服务（如 <code>npx serve .</code>），再用浏览器打开
+      <code>/preview-mobile.html</code>（端口以终端里打印为准）。勿用 <code>file://</code> 直接打开，否则 iframe 内页面可能无法加载。
+    </p>
+    <div class="phone" aria-label="手机预览框">
+      <iframe src="./index.html" title="心理微观察 H5"></iframe>
+    </div>
+  </div>
+</body>
+</html>
